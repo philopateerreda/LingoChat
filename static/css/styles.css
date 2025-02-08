@@ -1022,9 +1022,8 @@ body {
 }
 
 .nav-dropdown {
-    position: absolute;
-    right: 100%;
-    top: 0;
+    position: fixed;
+    right: 320px;
     background: var(--color-bg-tertiary);
     border-radius: 8px;
     padding: var(--spacing-md);
