@@ -1024,7 +1024,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    background: linear-gradient(135deg, #2a1f14 0%, #382a1d 100%);
     border-radius: 16px;
     padding: var(--spacing-lg);
     max-width: 500px;
@@ -1033,10 +1032,28 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="egyptian"] .word-modal {
+    background: linear-gradient(135deg, #2a1f14 0%, #382a1d 100%);
+    border: 2px solid var(--color-accent-primary);
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.2),
                 0 0 0 1000px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--color-accent-primary);
+}
+
+[data-theme="cyberpunk"] .word-modal {
+    background: rgba(10, 11, 20, 0.95);
+    border: 1px solid var(--color-accent-primary);
+    box-shadow: var(--neon-glow),
+                0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme=""] .word-modal {
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-accent-primary);
+    box-shadow: var(--shadow-elegant),
+                0 0 0 1000px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="egyptian"] .word-modal-title {
@@ -1087,8 +1104,23 @@ body {
 
 .word-modal-title {
     font-size: 1.5rem;
-    color: var(--color-accent-primary);
     font-weight: 700;
+}
+
+[data-theme="egyptian"] .word-modal-title {
+    color: var(--color-accent-primary);
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+[data-theme="cyberpunk"] .word-modal-title {
+    color: var(--color-accent-primary);
+    font-family: 'Share Tech Mono', monospace;
+    text-shadow: var(--neon-glow);
+}
+
+[data-theme=""] .word-modal-title {
+    color: var(--color-accent-primary);
 }
 
 .word-modal-close {
