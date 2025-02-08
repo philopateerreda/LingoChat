@@ -24,6 +24,13 @@
         transparent 2px,
         transparent 8px
     );
+    --marble-texture: repeating-linear-gradient(
+        45deg,
+        #f2f2f2,
+        #f2f2f2 10px,
+        #e0e0e0 10px,
+        #e0e0e0 20px
+    );
 }
 
 :root[data-theme="cyberpunk"] {
@@ -867,21 +874,26 @@ body {
 }
 
 [data-theme="egyptian"] .message {
-    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+    background: 
+        var(--marble-texture),
+        linear-gradient(135deg, #2a1f14 0%, #382a1d 100%);
+    background-size: 20px 20px, 100% 100%;
     border: 2px solid var(--color-accent-primary);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text-primary);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="egyptian"] .message::before {
-    content: '';
+    content: '☥ ⟰ ⥈';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--hieroglyph-pattern);
+    top: 10px;
+    right: 10px;
     opacity: 0.1;
-    pointer-events: none;
+    font-size: 14px;
+    color: var(--color-accent-primary);
 }
 
 [data-theme="egyptian"] .message::after {
