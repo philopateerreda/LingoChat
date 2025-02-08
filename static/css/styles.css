@@ -11,6 +11,11 @@
     --color-error: #cc5c5c;
     --shadow-egyptian: 0 0 20px rgba(212, 175, 55, 0.2);
     --border-egyptian: 2px solid var(--color-accent-primary);
+    --gradient-egyptian: linear-gradient(135deg, #1a1209 0%, #2a1f14 100%);
+    --ankh: "☥";
+    --nile-gradient: linear-gradient(to right, rgba(30, 144, 188, 0.1), rgba(30, 144, 188, 0.05));
+    --shadow-egyptian: 0 0 20px rgba(212, 175, 55, 0.2);
+    --border-egyptian: 2px solid var(--color-accent-primary);
     --gradient-egyptian: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 144, 188, 0.1));
     --hieroglyph-pattern: repeating-linear-gradient(
         45deg,

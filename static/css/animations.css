@@ -21,6 +21,26 @@
     }
 }
 
+@keyframes sandStorm {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        background-position: 100% 50%;
+        opacity: 0.1;
+    }
+}
+
+@keyframes hieroglyphPulse {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.1; }
+}
+
 [data-theme="egyptian"] .chat-container::before {
     content: '';
     position: fixed;
@@ -29,10 +49,46 @@
     right: 0;
     bottom: 0;
     background-image: 
-        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-        linear-gradient(45deg, rgba(30, 144, 188, 0.02) 25%, transparent 25%);
-    animation: nileWave 20s linear infinite;
+        var(--nile-gradient),
+        repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.03) 0px, rgba(212, 175, 55, 0.03) 2px, transparent 2px, transparent 8px);
+    animation: sandStorm 20s linear infinite;
     pointer-events: none;
+}
+
+[data-theme="egyptian"] .message {
+    background: var(--gradient-egyptian);
+    border: var(--border-egyptian);
+    box-shadow: var(--shadow-egyptian);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="egyptian"] .message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(212, 175, 55, 0.03) 0px,
+        rgba(212, 175, 55, 0.03) 2px,
+        transparent 2px,
+        transparent 8px
+    );
+    animation: hieroglyphPulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+[data-theme="egyptian"] .message::after {
+    content: var(--ankh);
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    color: var(--color-accent-primary);
+    opacity: 0.3;
+    font-size: 1.2em;
 }
 
 [data-theme="egyptian"] .message {
