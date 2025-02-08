@@ -1,0 +1,160 @@
+Pasted--follow-this-prompt-to-enhance-this-css-code-and-give-me-the-final-css-code-to-just-copy-and-past--1738942179470.txt
+
+follow this prompt to enhance this css code and give me the final css code to just copy and past:
+"
+
+#### **1. Core Objectives**
+- **Primary Goal**: Create a seamless, intuitive, and visually appealing chat interface that enhances the user's language-learning experience.
+- **Secondary Goals**:
+  - Facilitate smooth interactions between the user and the AI chatbot.
+  - Provide real-time feedback on user input (e.g., corrections, phonetic highlights, and clickable words).
+  - Ensure accessibility for all users, including those with visual or motor impairments.
+  - Support gamification elements like streaks, badges, and progress tracking within the chat.
+
+---
+
+#### **2. Key Features to Implement**
+
+##### **2.1 Message Layout**
+- **Design Requirements**:
+  - Messages should be visually distinct based on sender type:
+    - **User Messages**: Right-aligned, gradient background, rounded corners.
+    - **Bot Messages**: Left-aligned, solid background, subtle shadow.
+  - Include timestamps for each message in a muted color (e.g., `var(--text-secondary)`).
+  - Add a hover effect to messages for additional actions (e.g., copy text, mark as favorite, or add to flashcards).
+
+- **Animations**:
+  - Messages fade in smoothly when sent or received.
+  - Typing indicator animates with pulsing dots.
+  - Corrections or highlighted words pulse gently to draw attention.
+
+- **CSS Example**:
+  ```css
+  .message {
+      max-width: 75%;
+      padding: var(--spacing-md);
+      border-radius: 16px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInMessage var(--transition-slow) forwards;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all var(--transition-normal);
+  }
+  @keyframes fadeInMessage {
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  .message-user {
+      align-self: flex-end;
+      background: linear-gradient(
+          135deg, 
+          var(--color-primary), 
+          var(--color-primary-hover)
+      );
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
+  }
+  .message-bot {
+      align-self: flex-start;
+      background: var(--color-bg-accent);
+      color: var(--color-text-secondary);
+      margin-right: auto;
+      border-bottom-left-radius: 4px;
+  }
+  ```
+
+---
+
+##### **2.2 Typing Indicator**
+- **Design Requirements**:
+  - Display three animated dots (`...`) to indicate the bot is typing.
+  - Use a pulsing animation to make the indicator feel alive.
+  - Position the indicator at the bottom-left corner of the chat container.
+
+- **CSS Example**:
+  ```css
+  .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      align-self: flex-start;
+      background: var(--color-bg-accent);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: 16px;
+      max-width: 70%;
+  }
+  .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: var(--color-text-secondary);
+      border-radius: 50%;
+      animation: typing 1.4s infinite;
+  }
+  .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+  }
+  .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+  }
+  @keyframes typing {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+  }
+  ```
+
+---
+
+##### **2.3 Clickable Words and Corrections**
+- **Design Requirements**:
+  - Highlight unknown or incorrect words in the user's input.
+  - Allow users to click on highlighted words to view definitions, synonyms, or phonetic pronunciations.
+  - Corrections should appear as small badges next to the word, with hover effects for details.
+
+- **CSS Example**:
+  ```css
+  .clickable-word {
+      cursor: pointer;
+      transition: color var(--transition-fast);
+      position: relative;
+  }
+  .clickable-word:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+  }
+  .correction {
+      background-color: var(--color-warning);
+      color: var(--color-bg-primary);
+      border-radius: 4px;
+      padding: 2px 4px;
+      margin: 0 2px;
+      font-weight: 600;
+      cursor: help;
+      transition: all var(--transition-fast);
+  }
+  .correction:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  ```
+
+---
+
+##### **2.4 Chat Input Area**
+- **Design Requirements**:
+  - Use a sleek input bar with rounded corners and subtle shadows.
+  - Include action buttons for voice input, file uploads, and sending messages.
+  - Add a character counter that appears dynamically when the user types.
+
+- **CSS Example**:
+  ```css
+  .chat-input-container {
+      background: var(--color-bg-tertiary);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 -4px 15px ...

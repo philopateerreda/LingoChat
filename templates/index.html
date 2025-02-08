@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Chat Interface</title>
+    <link rel="stylesheet" href="../static/css/animations.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="user-info">
+                        <div class="avatar-wrapper">
+                            <div class="avatar">👤</div>
+                            <div class="level-badge" id="userLevel">B2</div>
+                        </div>
+                        <div class="user-details">
+                            <h3>User Name</h3>
+                            <div class="xp-bar">
+                                <div class="xp-progress" id="xpProgress" style="width: 75%"></div>
+                                <span class="xp-text" id="xpText">750/1000 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="streak-counter" id="streakCounter">
+                        <span class="streak-flame">🔥</span>
+                        <span id="streakDays">15 day streak</span>
+                        <div class="streak-tooltip">Keep practicing to maintain your streak!</div>
+                    </div>
+                </div>
+
+                <div class="quick-stats">
+                    <div class="stat-card" id="chatStats">
+                        <i class="fas fa-comments"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">24</span>
+                            <span class="stat-label">Chats Today</span>
+                        </div>
+                        <div class="stat-tooltip">You're making great progress!</div>
+                    </div>
+                    <div class="stat-card" id="wordStats">
+                        <i class="fas fa-book"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">158</span>
+                            <span class="stat-label">Words Learned</span>
+                        </div>
+                        <div class="stat-tooltip">Keep expanding your vocabulary!</div>
+                    </div>
+                </div>
+
+            <div class="daily-progress">
+                <h4>Daily Goals</h4>
+                <div class="progress-items">
+                    <div class="progress-item">
+                        <div class="progress-icon">💬</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                        <span>4/5 Chats</span>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-icon">📝</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span>30/50 Words</span>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-icon">🎯</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 40%"></div>
+                        </div>
+                        <span>2/5 Exercises</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-section">
+                <h4>Recent Achievements</h4>
+                <div class="achievements-grid">
+                    <div class="achievement-badge" title="Word Master">📚</div>
+                    <div class="achievement-badge" title="Perfect Week">⭐</div>
+                    <div class="achievement-badge locked" title="Grammar Expert">🎯</div>
+                    <div class="achievement-badge locked" title="Conversation Pro">💭</div>
+                </div>
+            </div>
+
+            <div class="suggestions-section">
+                <h4>Practice Suggestions</h4>
+                <div class="suggestion-cards">
+                    <div class="suggestion-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>Practice phrasal verbs</p>
+                        <span class="suggestion-difficulty">Medium</span>
+                    </div>
+                    <div class="suggestion-card">
+                        <i class="fas fa-star"></i>
+                        <p>Review past tense</p>
+                        <span class="suggestion-difficulty">Easy</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tooltip="Review chat history">
+                    <div class="nav-icon">
+                        <i class="fas fa-comment"></i>
+                        <div class="notification-dot"></div>
+                    </div>
+                    <span>Chat</span>
+                    <div class="nav-badge">3</div>
+                </a>
+                <a href="#" class="nav-item" data-tooltip="75% mastered—keep going!">
+                    <div class="nav-icon">
+                        <i class="fas fa-layer-group"></i>
+                        <svg class="progress-ring">
+                            <circle r="10" cx="12" cy="12" class="progress" style="stroke-dashoffset: 15.7"></circle>
+                        </svg>
+                    </div>
+                    <span>Flashcards</span>
+                    <div class="nav-badge">12</div>
+                </a>
+                <a href="#" class="nav-item" data-tooltip="Extracted 50 new words last session">
+                    <div class="nav-icon">
+                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-fire flame-icon"></i>
+                    </div>
+                    <span>Transcripts</span>
+                </a>
+                <a href="#" class="nav-item" data-tooltip="You're #5 globally!">
+                    <div class="nav-icon">
+                        <i class="fas fa-trophy"></i>
+                        <div class="achievement-count">3</div>
+                    </div>
+                    <span>Leaderboard</span>
+                </a>
+            </nav>
+        </div>
+        <div class="chat-container">
+            <header class="chat-header">
+                <div class="header-content">
+                    <h1>CREATIVE<span class="accent-text">CHAT</span></h1>
+                    <div class="header-controls">
+                        <div class="connection-status">
+                            <span class="status-dot"></span>
+                            Active Session
+                        </div>
+                        <button class="sidebar-toggle" id="sidebarToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="chat-messages" id="chatMessages">
+            </main>
+
+            <footer class="chat-input-container">
+                <button class="action-btn" id="voiceBtn" title="Voice Input">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="Type your message..." maxlength="500">
+                    <div class="char-counter">0/500</div>
+                </div>
+                <button class="action-btn" id="uploadBtn" title="Upload File">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <button class="action-btn send-btn" id="sendBtn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </footer>
+        </div>
+
+        <!-- Word Modal -->
+        <div class="word-modal" id="wordModal">
+            <div class="word-modal-header">
+                <h2 class="word-modal-title" id="modalWord">Word</h2>
+                <button class="word-modal-close" id="modalClose">×</button>
+            </div>
+            <div class="word-modal-content">
+                <div class="word-modal-section">
+                    <h3>Definition</h3>
+                    <p id="modalDefinition"></p>
+                </div>
+                <div class="word-modal-section">
+                    <h3>Phonetics</h3>
+                    <div class="phonetics-container">
+                        <span id="modalPhonetics"></span>
+                        <button class="phonetics-play" id="playPronunciation">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="word-modal-section">
+                    <h3>Synonyms</h3>
+                    <div class="synonyms-list" id="modalSynonyms">
+                        <!-- Synonyms will be added dynamically -->
+                    </div>
+                </div>
+                <div class="word-modal-section">
+                    <h3>Examples</h3>
+                    <div class="examples-list" id="modalExamples">
+                        <!-- Examples will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="word-modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="modalDismiss">Dismiss</button>
+                <button class="modal-btn modal-btn-primary" id="addToFlashcards">Add to Flashcards</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/main.js"></script>
+</body>
+</html>

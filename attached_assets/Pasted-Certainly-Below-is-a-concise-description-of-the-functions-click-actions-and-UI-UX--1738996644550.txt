@@ -1,0 +1,51 @@
+Certainly! Below is a **concise description** of the **functions**, **click actions**, and **UI/UX** for the four buttons in the gamified dashboard:
+
+---
+
+### **1. Chat**
+- **Function**: Provides access to the chat history and recent interactions with the AI chatbot.
+- **On Click**: Opens a summary of past chats, highlighting key metrics like words learned, corrections made, or topics discussed. Suggests new topics or words to practice based on past conversations.
+- **UI/UX**:
+  - Icon: Speech bubble with a notification dot for unread messages or suggestions.
+  - Hover Effect: Subtle glow or tooltip showing "Review chat history."
+  - Active State: Gradient background (`var(--color-primary)`) with bold text.
+
+---
+
+### **2. Flashcards**
+- **Function**: Summarizes flashcard activity, such as mastered cards, pending cards, and streaks.
+- **On Click**: Displays a preview of the user’s flashcard deck, categorized into mastered, pending, and suggested cards. Includes an option to add new words from recent chats or transcripts.
+- **UI/UX**:
+  - Icon: Card stack with a progress ring overlay indicating mastery percentage.
+  - Hover Effect: Animates the progress ring and shows a tooltip like "75% mastered—keep going!"
+  - Active State: Pulsing animation for incomplete categories.
+
+---
+
+### **3. Transcripts**
+- **Function**: Tracks uploaded transcripts, showing metrics like total words processed, unknown words extracted, or practice sessions completed.
+- **On Click**: Opens a summary of uploaded transcripts, allowing users to view extracted vocabulary, convert words into flashcards, or upload new files.
+- **UI/UX**:
+  - Icon: Document with a flame icon for streak-based learning.
+  - Hover Effect: Tooltip showing details like "Extracted 50 new words last session."
+  - Active State: Glowing border around the icon for active uploads or processing.
+
+---
+
+### **4. Leaderboard**
+- **Function**: Displays the user’s rank in global or friend-based leaderboards based on points earned through daily streaks, word mastery, or challenges.
+- **On Click**: Opens a leaderboard page showing rankings, streak milestones, and rewards. Encourages competition by highlighting nearby competitors.
+- **UI/UX**:
+  - Icon: Trophy with a badge count overlay for achievements.
+  - Hover Effect: Enlarges the icon slightly and shows a tooltip like "You’re #5 globally!"
+  - Active State: Pulsing animation for new achievements or rank changes.
+
+---
+
+### **Overall UI/UX Design**
+- **Consistency**: All buttons share a card-like design with rounded corners, subtle shadows, and hover effects for interactivity.
+- **Animations**: Smooth transitions (e.g., scaling, glowing) make interactions engaging.
+- **Accessibility**: Tooltips and focus states ensure clarity and usability for all users.
+- **Responsiveness**: Buttons adapt to smaller screens, stacking vertically with collapsible sections if needed.
+
+This design ensures each button serves a clear purpose while maintaining a cohesive and visually appealing dashboard experience.
