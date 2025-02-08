@@ -1,0 +1,144 @@
+Here's an enhanced, distraction-optimized version of your prompt with clarified functionality and focused UX flow:
+
+---
+
+### **Supercharged Flashcards Page Specification for LingoChat**  
+**Objective:** Create a hyper-focused, immersive flashcard experience with intelligent feature integration  
+
+---
+
+### **Core Flashcard Mechanics (Detailed Functionality)**  
+
+#### **1. Active Card Interaction System**  
+- **Dynamic Flip Mechanism**  
+  - *3D Card Flip:* CSS transform-style: preserve-3d with 0.4s cubic-bezier transition  
+  - *Multi-input Support:* Click/tap, arrow keys (←/→), touch swipes (>50px horizontal movement)  
+  - *Hover Preview:* Slight elevation (+2px) on desktop hover  
+
+- **Card Navigation Controls** (Fixed Bottom Center)  
+  - `〈 Previous` Button: Revisit previous card with slide-right animation  
+  - `Next 〉` Button: Advance with slide-left animation  
+  - `Edit ✎` Button: In-place editing modal with auto-save (persists to localStorage)  
+
+- **Contextual Action Bar** (Top-Right of Card)  
+  - `🔊 Auto-Play Toggle:` Global pronunciation setting (stored in user profile)  
+  - `📖 Dictionary:` Modal overlay with monolingual definitions (API-powered)  
+  - `❓ Mark Unknown:` Adds to spaced repetition queue (pulse animation on confirm)  
+
+#### **2. Intelligent Content Display**  
+- **Front Face Components**  
+  - Primary Target Word (font-size: clamp(2rem, 4vw, 3rem))  
+  - Part-of-Speech Tag (discreet superscript badge)  
+  - Script Source Icon (filmstrip icon for movie-based words)  
+
+- **Back Face Components**  
+  - Phonetic Transcription + Speaker Button (text-to-speech API)  
+  - Definition (max 2 lines, truncated with "Show More" expander)  
+  - Contextual Examples (fade-in list with 0.2s staggered delays)  
+  - Synonym Web (animated word cloud on click/tap)  
+
+#### **3. Focus-Enhancing UI Systems**  
+- **Progressive Disclosure Sidebar**  
+  - Collapsed Default: 48px wide hover-to-expand (shows icons only)  
+  - Contains (when expanded):  
+    - Flashcard Set Selector (dropdown + visual progress indicators)  
+    - Session Stats (cards remaining/learned)  
+    - Theme Switcher (light/dark/custom presets)  
+
+- **Minimalist Progress Tracking**  
+  - Circular Progress Indicator: Concentric ring around user avatar (0-100% fill)  
+  - Micro-Interactions: Subtle "ping" animation on every 25% completion  
+
+- **Distraction-Free Mode**  
+  - Fullscreen Toggle: Removes all UI chrome (ESC to restore)  
+  - Auto-Advance: Optional 8-second timer (visualized via progress ring)  
+
+---
+
+### **Laser-Focused UI/UX Requirements**  
+
+#### **1. Visual Hierarchy Matrix**  
+| Element | Z-Index | Opacity | Transition |  
+|---------|---------|---------|------------|  
+| Active Card | 50 | 100% | 400ms ease-out |  
+| Backdrop | 10 | 90% | None |  
+| Controls | 40 | 100% | 200ms ease-in |  
+| Modals | 60 | 97% | 300ms fade |  
+
+#### **2. Motion Design Principles**  
+- **Card Transitions:**  
+  - Enter: Slide-up from bottom 20vh with 10° rotation  
+  - Exit: Fade-out + 5% scale reduction  
+- **Error Prevention:**  
+  - Edit Conflicts: Pulse animation on unsaved changes attempt  
+  - End of Set: Radial confetti burst + haptic feedback (mobile)  
+
+#### **3. Performance-First CSS**  
+```css  
+/* Hardware-accelerated animations */  
+.flip-card {  
+  will-change: transform, opacity;  
+  transform: translateZ(0);  
+}  
+
+/* Fluid typography system */  
+:root {  
+  --type-scale: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);  
+  --type-ratio: 1.333;  
+}  
+```
+
+---
+
+### **Technical Implementation Strategy**  
+
+#### **1. State Management Architecture**  
+```javascript  
+const flashcardState = {  
+  currentSet: [],  
+  activeIndex: 0,  
+  sessionStats: {  
+    viewed: 0,  
+    markedUnknown: [],  
+    timeEngaged: 0 // tracked via requestAnimationFrame  
+  },  
+  userPrefs: {  
+    autoPlay: true,  
+    motionReduced: false,  
+    lastPosition: {} // localStorage sync  
+  }  
+};  
+```
+
+#### **2. Intelligent Preloading**  
+- **Card Queue:** Pre-render next 3 cards in memory  
+- **Media Cache:**  
+  - Prefetch pronunciation audio for current set  
+  - Lazy-load images/scripts beyond initial 10 cards  
+
+#### **3. Accessibility Compliance**  
+- Screen Reader Optimization:  
+  - aria-live regions for card changes  
+  - Semantic HTML structure for navigation  
+- Contrast Modes:  
+  - High-contrast theme option  
+  - Customizable focus rings (user setting)  
+
+---
+
+### **Anti-Distraction Protocol**  
+1. **Initial Session Flow:**  
+   - 3-second "Focus Zone" animation on entry (blurs non-essential UI)  
+   - First-time tooltips disabled by default (opt-in help)  
+
+2. **Notification Handling:**  
+   - Pause leaderboard updates during active card engagement  
+   - Batch non-critical messages to session breaks  
+
+3. **Content Prioritization:**  
+   - Progressive disclosure of complex features  
+   - Default hide movie script context unless requested  
+
+---
+
+This specification creates a **cognitively optimized flashcard environment** while maintaining advanced functionality through thoughtful UI layering and progressive disclosure. All interactive elements follow Fitts' Law principles for optimal target sizing and spacing.
