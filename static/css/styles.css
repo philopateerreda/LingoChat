@@ -855,7 +855,7 @@ body {
 }
 
 .message {
-    max-width: 75%;
+    width: 75%;
     padding: var(--spacing-md);
     border-radius: 12px;
     position: relative;
@@ -1217,6 +1217,7 @@ body {
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
 }
 
 .theme-dropdown.active .theme-menu {
