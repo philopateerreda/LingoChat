@@ -1,14 +1,17 @@
 :root[data-theme="egyptian"] {
-    --color-bg-primary: #2c1810;
-    --color-bg-secondary: #3d2317;
-    --color-bg-tertiary: #4e2e1e;
+    --color-bg-primary: #1a1209;
+    --color-bg-secondary: #2a1f14;
+    --color-bg-tertiary: #382a1d;
     --color-accent-primary: #d4af37;
-    --color-accent-secondary: #c17817;
+    --color-accent-secondary: #1e90bc;
     --color-text-primary: #f4e4bc;
     --color-text-secondary: #bc955c;
     --color-success: #7eb77f;
     --color-warning: #e6b89c;
     --color-error: #cc5c5c;
+    --shadow-egyptian: 0 0 20px rgba(212, 175, 55, 0.2);
+    --border-egyptian: 2px solid var(--color-accent-primary);
+    --gradient-egyptian: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 144, 188, 0.1));
     --hieroglyph-pattern: repeating-linear-gradient(
         45deg,
         rgba(212, 175, 55, 0.1) 0px,
