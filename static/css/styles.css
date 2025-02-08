@@ -764,6 +764,25 @@ body {
     flex-direction: column;
     gap: var(--spacing-md);
     background: var(--color-bg-secondary);
+    position: relative;
+}
+
+[data-theme="egyptian"] .chat-messages::before {
+    content: '☥ ⟰ ⥈ ꧂ ᚋ ᚌ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    color: var(--color-accent-primary);
+    opacity: 0.03;
+    pointer-events: none;
+    line-height: 3;
 }
 
 .chat-messages::-webkit-scrollbar {
