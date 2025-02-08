@@ -855,11 +855,15 @@ body {
 }
 
 .message {
-    width: 75%;
+    min-width: 200px;
+    max-width: 75%;
+    width: fit-content;
     padding: var(--spacing-md);
     border-radius: 12px;
     position: relative;
     overflow: hidden;
+    word-wrap: break-word;
+    flex-shrink: 0;
 }
 
 [data-theme="egyptian"] .message {
