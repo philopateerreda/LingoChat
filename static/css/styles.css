@@ -1,3 +1,29 @@
+:root[data-theme="cyberpunk"] {
+    --color-bg-primary: #0a0b14;
+    --color-bg-secondary: #12152b;
+    --color-bg-tertiary: #1a1f3d;
+    --color-accent-primary: #00fff2;
+    --color-accent-secondary: #ff00d4;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #7f85b2;
+    --color-success: #39ff14;
+    --color-warning: #ff3c00;
+    --color-error: #ff0033;
+    --neon-glow: 0 0 10px rgba(0, 255, 242, 0.5), 0 0 20px rgba(0, 255, 242, 0.3);
+    --magenta-glow: 0 0 10px rgba(255, 0, 212, 0.5), 0 0 20px rgba(255, 0, 212, 0.3);
+    --grid-bg: repeating-linear-gradient(
+        transparent 0px,
+        rgba(0, 255, 242, 0.05) 1px,
+        transparent 2px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        rgba(0, 255, 242, 0.05) 1px,
+        transparent 2px
+    );
+}
+
 :root {
     --color-bg-primary: #1a1c2e;
     --color-bg-secondary: #242842;
@@ -807,6 +833,35 @@ body {
     position: relative;
     background: var(--color-bg-tertiary);
     box-shadow: var(--shadow-elegant);
+    animation: messageGlow 2s infinite alternate;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 255, 242, 0.2);
+    background-image: linear-gradient(45deg, 
+        rgba(0, 255, 242, 0.05),
+        rgba(255, 0, 212, 0.05)
+    );
+}
+
+[data-theme="cyberpunk"] .message {
+    box-shadow: var(--neon-glow);
+}
+
+[data-theme="cyberpunk"] .message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--grid-bg);
+    border-radius: 12px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+@keyframes messageGlow {
+    from { box-shadow: var(--neon-glow); }
+    to { box-shadow: var(--magenta-glow); }
 }
 
 .message-bot {
