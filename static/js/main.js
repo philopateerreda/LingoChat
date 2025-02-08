@@ -1,34 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Switcher
-    const themeToggle = document.getElementById('themeToggle');
-    const themeDropdown = themeToggle.closest('.theme-dropdown');
-    const themeOptions = document.querySelectorAll('.theme-option');
-
-    themeToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        themeDropdown.classList.toggle('active');
-    });
-
-    themeOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const theme = option.dataset.theme;
-            document.documentElement.setAttribute('data-theme', theme);
-            themeDropdown.classList.remove('active');
-            localStorage.setItem('theme', theme);
-        });
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!themeDropdown.contains(e.target)) {
-            themeDropdown.classList.remove('active');
-        }
-    });
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    }
     // Gamification Features
     class GamificationSystem {
         constructor() {
