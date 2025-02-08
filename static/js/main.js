@@ -198,6 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
 
     navItems.forEach(item => {
+        // Wrap each nav item in a container
+        const wrapper = document.createElement('div');
+        wrapper.className = 'nav-item-wrapper';
+        item.parentNode.insertBefore(wrapper, item);
+        wrapper.appendChild(item);
+        
         const createDropdown = (item) => {
             const dropdown = document.createElement('div');
             dropdown.className = 'nav-dropdown';
@@ -295,16 +301,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            // Remove active class from all items
-            navItems.forEach(nav => nav.classList.remove('active'));
-            // Add active class to clicked item
-            item.classList.add('active');
+            const allWrappers = document.querySelectorAll('.nav-item-wrapper');
+            const thisWrapper = item.closest('.nav-item-wrapper');
+            
+            allWrappers.forEach(w => {
+                if (w !== thisWrapper) {
+                    w.classList.remove('active', 'expanded');
+                }
+            });
+            
+            thisWrapper.classList.toggle('active');
+            thisWrapper.classList.toggle('expanded');
+            
+            // Update positions of subsequent items
+            let currentOffset = 0;
+            allWrappers.forEach(w => {
+                if (w.classList.contains('expanded')) {
+                    currentOffset += 200; // Adjust based on dropdown height
+                }
+                w.style.transform = currentOffset > 0 ? `translateY(${currentOffset}px)` : '';
+            });
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
-            if (!item.contains(e.target)) {
-                item.classList.remove('active');
+            const wrapper = item.closest('.nav-item-wrapper');
+            if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove('active', 'expanded');
+                // Reset positions
+                document.querySelectorAll('.nav-item-wrapper').forEach(w => {
+                    w.style.transform = '';
+                });
             }
         });
     });

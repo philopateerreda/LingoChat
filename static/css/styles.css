@@ -196,11 +196,26 @@ body {
     color: var(--color-text-secondary);
 }
 
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    position: relative;
+}
+
 .nav-item {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 48px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(192, 160, 128, 0.05);
+    border: 1px solid rgba(192, 160, 128, 0.1);
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+    z-index: 1;
 }
 
 .nav-badge {
@@ -209,10 +224,28 @@ body {
     padding: 2px 6px;
     border-radius: 10px;
     font-size: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-item-wrapper {
+    position: relative;
+    transition: margin var(--transition-normal);
+}
+
+.nav-item-wrapper.expanded {
+    margin-bottom: 200px; /* Adjust based on dropdown height */
 }
 
 .sidebar::-webkit-scrollbar {
     width: 6px;
+}
+
+.nav-items-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -1010,36 +1043,45 @@ body {
 
 .nav-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, rgba(42, 46, 74, 0.98) 100%);
     border-radius: 12px;
     padding: var(--spacing-lg);
     width: 100%;
-    margin-top: 12px;
+    height: 0;
+    overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(192, 160, 128, 0.15);
-    z-index: 1001;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(10px);
+    transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(12px);
+    z-index: 0;
 }
 
-.nav-item {
+.nav-item-wrapper {
     position: relative;
-    z-index: 1;
 }
 
-.nav-item.active {
-    z-index: 1002;
-}
-
-.nav-item.active .nav-dropdown {
+.nav-item-wrapper.active .nav-dropdown {
+    height: auto;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+    z-index: 1;
+}
+
+.nav-item-wrapper.active ~ .nav-item-wrapper {
+    transform: translateY(200px); /* Adjust based on dropdown height */
+    transition: transform var(--transition-normal);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+    border-color: transparent;
+    z-index: 2;
 }
 
 .nav-item.active {
