@@ -1,3 +1,23 @@
+:root[data-theme="egyptian"] {
+    --color-bg-primary: #2c1810;
+    --color-bg-secondary: #3d2317;
+    --color-bg-tertiary: #4e2e1e;
+    --color-accent-primary: #d4af37;
+    --color-accent-secondary: #c17817;
+    --color-text-primary: #f4e4bc;
+    --color-text-secondary: #bc955c;
+    --color-success: #7eb77f;
+    --color-warning: #e6b89c;
+    --color-error: #cc5c5c;
+    --hieroglyph-pattern: repeating-linear-gradient(
+        45deg,
+        rgba(212, 175, 55, 0.1) 0px,
+        rgba(212, 175, 55, 0.1) 2px,
+        transparent 2px,
+        transparent 8px
+    );
+}
+
 :root[data-theme="cyberpunk"] {
     --color-bg-primary: #0a0b14;
     --color-bg-secondary: #12152b;
@@ -830,6 +850,67 @@ body {
     max-width: 75%;
     padding: var(--spacing-md);
     border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="egyptian"] .message {
+    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+    border: 2px solid var(--color-accent-primary);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+[data-theme="egyptian"] .message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--hieroglyph-pattern);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+[data-theme="egyptian"] .message::after {
+    content: '⊱';
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 1.2em;
+    color: var(--color-accent-primary);
+    opacity: 0.3;
+}
+
+[data-theme="egyptian"] .message-bot::after {
+    content: '⊰';
+    left: 10px;
+    right: auto;
+}
+
+[data-theme="cyberpunk"] .message::before {
+    content: '</>'; 
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-family: monospace;
+    font-size: 0.8em;
+    opacity: 0.3;
+    color: var(--color-accent-primary);
+}
+
+.message-content {
+    position: relative;
+    z-index: 1;
+}
+
+.message code {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    border-left: 2px solid var(--color-accent-primary);
+}
     position: relative;
     background: var(--color-bg-tertiary);
     box-shadow: var(--shadow-elegant);
