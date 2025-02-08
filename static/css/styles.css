@@ -942,6 +942,7 @@ body {
     font-family: monospace;
     border-left: 2px solid var(--color-accent-primary);
 }
+.message {
     position: relative;
     background: var(--color-bg-tertiary);
     box-shadow: var(--shadow-elegant);
