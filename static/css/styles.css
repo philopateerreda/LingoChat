@@ -55,6 +55,14 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     padding: var(--spacing-md);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.app-container.sidebar-open .sidebar {
+    width: 300px;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .avatar-wrapper {
